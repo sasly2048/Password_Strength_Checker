@@ -7,10 +7,10 @@ int Strength_Check(char password[])
     int score = 0;
     int len = strlen(password);
 
-    int has_upper = 0;
-    int has_lower = 0;
-    int has_digit = 0;
-    int has_special = 0;
+    int upper = 0;
+    int lower = 0;
+    int digit = 0;
+    int special = 0;
 
     if (len >= 8) 
     {
@@ -18,25 +18,25 @@ int Strength_Check(char password[])
     }
     for (int i = 0; i < len; i++) 
     {
-        if (isupper(password[i]) && !has_upper) 
+        if (isupper(password[i]) && !upper) 
         {
             score++;
-            has_upper = 1; 
+            upper = 1; 
         } 
-        else if (islower(password[i]) && !has_lower) 
+        else if (islower(password[i]) && !lower) 
         {
             score++;
-            has_lower = 1; 
+            lower = 1; 
         } 
-        else if (isdigit(password[i]) && !has_digit) 
+        else if (isdigit(password[i]) && !digit) 
         {
             score++;
-            has_digit = 1; 
+            digit = 1; 
         }
-        else if (!isalnum(password[i]) && !has_special) 
+        else if (!isalnum(password[i]) && !special) 
         {
             score++;
-            has_special = 1; 
+            special = 1; 
         }
     }
     
