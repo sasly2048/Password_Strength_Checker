@@ -49,11 +49,11 @@ int main(){
     Strength_Check(password);
 
     switch(Strength_Check(password)){
-        case 1 : printf("Password Strength: Bad");break;
+        case 1 : printf("Password Strength: Very Weak");break;
         case 2 : printf("Password Strength: Weak");break;
         case 3 : printf("Password Strength: Moderate");break;
-        case 4 : printf("Password Strength: Good");break;
-        case 5 : printf("Password Strength: Strong");break;
+        case 4 : printf("Password Strength: Strong");break;
+        case 5 : printf("Password Strength: Very Strong");break;
         default : printf("INVALID PASSWORD");
     }
     return 0;
