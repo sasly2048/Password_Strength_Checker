@@ -5,33 +5,38 @@
 int Strength_Check(char password[]){
     int i=0;
 
-    if (strlen(password) >=8)
+    if (strlen(password) >=8){
         i++;
-    
-    for(int j =0 ; j < strlen(password); j++)
-    {
-        if((password[j] >= 'A')&& (password[j] <='Z'))
-            i++;
-            break;
     }
     for(int j =0 ; j < strlen(password); j++)
     {
-        if((password[j] >= '0')&& (password[j] <='9'))
+        if(password[j] >= 'A' && password[j] <='Z'){
             i++;
-            break;
+            break;}
     }
     for(int j =0 ; j < strlen(password); j++)
     {
-        if((password[j] >= 'a')&& (password[j] <='z'))
+        if(password[j] >= '0'&& password[j] <='9'){
             i++;
-            break;
+            break;}
     }
     for(int j =0 ; j < strlen(password); j++)
     {
-        if( !( ((password[j] >= 'a')&&(password[j] <='z')) || ((password[j] >= '0')||(password[j] <='9')))|| ((password[j]>='A')&&(password[j]<='Z'))  )
+        if(password[j] >= 'a' && password[j] <='z'){
             i++;
-            break;
+            break;}
     }
+    for(int j =0; j < strlen(password); j++){
+        if(!(password[j] >= 'A' && password[j] <='Z')){
+            if(!(password[j] >= 'a' && password[j] <='z')){
+                if(!(password[j] >= '0' && password[j] <='9')){
+                    i++;
+                    break;
+                }
+            }
+        }
+    }
+        
     return i;
 }
 
