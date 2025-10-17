@@ -4,8 +4,10 @@
 
 int Strength_Check(char password[]){
     int i=0;
+
     if (strlen(password) >=8)
         i++;
+    
     for(int j =0 ; j < strlen(password); j++)
     {
         if((password[j] >= 'A')&& (password[j] <='Z'))
@@ -21,7 +23,14 @@ int Strength_Check(char password[]){
     for(int j =0 ; j < strlen(password); j++)
     {
         if((password[j] >= 'a')&& (password[j] <='z'))
-            continue;
+            i++;
+            break;
+    }
+    for(int j =0 ; j < strlen(password); j++)
+    {
+        if(!( ((islower(password[j]) >= 'a')&& (islower(password[j]) <='z')) || ((password[j] >= '0')&& (password[j] <='9')))  )
+            i++;
+            break;
     }
     return i;
 }
@@ -40,11 +49,11 @@ int main(){
     Strength_Check(password);
 
     switch(Strength_Check(password)){
-        case 0 : printf("Password Strength: Bad");break;
-        case 1 : printf("Password Strength: Easy");break;
-        case 2 : printf("Password Strength: Moderate");break;
-        case 3 : printf("Password Strength: Good");break;
-        case 4 : printf("Password Strength: Strong");break;
+        case 1 : printf("Password Strength: Bad");break;
+        case 2 : printf("Password Strength: Weak");break;
+        case 3 : printf("Password Strength: Moderate");break;
+        case 4 : printf("Password Strength: Good");break;
+        case 5 : printf("Password Strength: Strong");break;
         default : printf("INVALID PASSWORD");
     }
     return 0;
