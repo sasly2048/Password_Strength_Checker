@@ -28,7 +28,7 @@ int Strength_Check(char password[]){
     }
     for(int j =0 ; j < strlen(password); j++)
     {
-        if(!( ((islower(password[j]) >= 'a')&& (islower(password[j]) <='z')) || ((password[j] >= '0')&& (password[j] <='9')))  )
+        if( !( ((password[j] >= 'a')&&(password[j] <='z')) || ((password[j] >= '0')||(password[j] <='9')))|| ((password[j]>='A')&&(password[j]<='Z'))  )
             i++;
             break;
     }
