@@ -38,7 +38,6 @@ int Strength_Check(char password[])
 
 int main()
 {
-
     printf("\nConditions to be followed: \n");
     printf("1.Password should have atleast 8 Characters\n");
     printf("2.Password should have aleast 1 Digit\n");
