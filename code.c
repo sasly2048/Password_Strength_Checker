@@ -1,69 +1,84 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <ctype.h> 
 
 int Strength_Check(char password[]) 
 {
-    int i=0;
+    int score = 0;
+    int len = strlen(password);
 
-    if (strlen(password) >= 8)
-        i++;
+    int has_upper = 0;
+    int has_lower = 0;
+    int has_digit = 0;
+    int has_special = 0;
+
+    if (len >= 8) 
+    {
+        score++;
+    }
+    for (int i = 0; i < len; i++) 
+    {
+        if (isupper(password[i]) && !has_upper) 
+        {
+            score++;
+            has_upper = 1; 
+        } 
+        else if (islower(password[i]) && !has_lower) 
+        {
+            score++;
+            has_lower = 1; 
+        } 
+        else if (isdigit(password[i]) && !has_digit) 
+        {
+            score++;
+            has_digit = 1; 
+        }
+        else if (!isalnum(password[i]) && !has_special) 
+        {
+            score++;
+            has_special = 1; 
+        }
+    }
     
-    for(int j = 0 ; j < strlen(password); j++)
-    {
-        if( (password[j] >= 'A') && (password[j] <= 'Z') )
-            i++;
-            break;
-    }
-    for(int j = 0 ; j < strlen(password); j++)
-    {
-        if( (password[j] >= '0') && (password[j] <='9') )
-            i++;
-            break;
-    }
-    for(int j = 0 ; j < strlen(password); j++)
-    {
-        if( (password[j] >= 'a') && (password[j] <='z') )
-            i++;
-            break;
-    }
-    for(int j = 0 ; j < strlen(password); j++)
-    {
-        if(!( ( (islower(password[j]) >= 'a')&& (islower(password[j]) <='z') ) || ( (password[j] >= '0')&& (password[j] <='9') ) )  )
-            i++;
-            break;
-    }
-    return i;
+    return score;
 }
 
-int main()
+int main() 
 {
-    printf("\nConditions to be followed: \n");
-    printf("1.Password should have atleast 8 Characters\n");
-    printf("2.Password should have aleast 1 Digit\n");
-    printf("3.Password should have atleast 1 Special Character\n");
-    printf("4.Password should have atleast 1 One Capital Letter\n\n");
-
+    printf("\n Password Strength Checker \n");
+    printf("Conditions for a strong password:\n");
+    printf("1. At least 8 characters\n");
+    printf("2. At least 1 digit (0-9)\n");
+    printf("3. At least 1 special character (!, @, #, etc.)\n");
+    printf("4. At least 1 uppercase letter (A-Z)\n");
+    printf("5. At least 1 lowercase letter (a-z)\n\n");
 
     char password[100];
     printf("Enter your password: ");
-    scanf("%s", password);
+    scanf("%99s", password);
 
-    Strength_Check(password);
+    int strength = Strength_Check(password);
 
-    switch(Strength_Check(password))
+    printf("\n Result: \n");
+    
+    switch (strength) 
     {
-        case 1 : printf("Password Strength: Very Weak");
-        break;
-        case 2 : printf("Password Strength: Weak");
-        break;
-        case 3 : printf("Password Strength: Moderate");
-        break;
-        case 4 : printf("Password Strength: Strong");
-        break;
-        case 5 : printf("Password Strength: Very Strong");
-        break;
-        default : printf("INVALID PASSWORD");
+        case 0:
+        case 1:
+            printf("Password Strength: Very Weak\n");
+            break;
+        case 2:
+            printf("Password Strength: Weak\n");
+            break;
+        case 3:
+            printf("Password Strength: Moderate\n");
+            break;
+        case 4:
+            printf("Password Strength: Strong\n");
+            break;
+        case 5:
+            printf("Password Strength: Very Strong\n");
+            break;
     }
     return 0;
 }
