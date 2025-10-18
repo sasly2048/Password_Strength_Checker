@@ -69,7 +69,7 @@ int main()
 
     int PassStrength = Strength_Check(password);
 
-    printf("\n Result: \n");
+    printf("\nResult: \n");
     
     switch (PassStrength) 
     {
