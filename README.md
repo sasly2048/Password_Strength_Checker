@@ -54,4 +54,5 @@ gcc password_strength_checker.c
 ## **🖥️** Using GCC (Windows)
 ```bash
 gcc password_strength_checker.c
-a or ./a 
+a or ./a
+
