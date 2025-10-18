@@ -88,7 +88,7 @@ void Condition_Check(char password[]){
         case 4: printf("Password should have atleast 1 Uppercase\n");printf("Password should have atleast 1 Lowercase\n");printf("Password should have atleast 1 Special Character\n");break;
         case 5: printf("Password should have atleast 1 Lowercase\n");printf("Password should have atleast 1 Special Character\n");break;
         case 6: printf("Password should have atleast 1 Uppercase\n");printf("Password should have atleast 1 Special Character\n");break;
-        case 7: printf("Password should hve atleast 1 Specail Character\n");break;
+        case 7: printf("Password should hve atleast 1 Special Character\n");break;
         case 8: printf("Password should have atleast 1 Uppercase\n");printf("Password should have atleast 1 Digit\n");printf("Password should have atleast 1 Digit\n");break;
         case 9: printf("Password should have atleast 1 Lowercase\n");printf("Password should have atleast 1 Digit\n");break;
         case 10: printf("Password should have atleast 1 Uppercase\n");printf("Password should have atleast 1 Digit\n");break;
