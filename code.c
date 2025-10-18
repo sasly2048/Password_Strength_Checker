@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 void Strength_Check(char password[]){
     int i=0;
@@ -43,7 +45,6 @@ void Strength_Check(char password[]){
         case 5 : printf("Password Strength: Very Strong\n");break;
         default : printf("INVALID PASSWORD\n");
     }
-    printf("SCORE %d/5\n", i);
 }
 
 void Condition_Check(char password[]){
@@ -100,31 +101,81 @@ void Condition_Check(char password[]){
     }
 }
 
+void Generator(){
+    int length;
+    printf("Length: ");
+    scanf("%d", &length);
+    char password[length];
+    srand(time(NULL));
+
+
+    char digits[] = "0123456789";
+    int length_digits = strlen(digits);
+
+    char uppercase[] = "ASDFGHJKLQWERTYUIOPZXCVBNM";
+    int upper_length = strlen(uppercase);
+
+    char lowercase[] = "asdfghjklqwertyuiopzxcvbnm";
+    int lowercase_length = strlen(lowercase);
+
+    char symboles[] = "!@#$^&%*?~()";
+    int length_symboles = strlen(symboles);
+
+    for (int i=0; i<length; i++){
+        int char_random = rand()%4;
+        if(char_random==0)
+            password[i] = digits[rand() % length_digits];
+        else if(char_random==1)
+            password[i] = uppercase[rand() % upper_length];
+        else if(char_random==2)
+            password[i] = lowercase[rand() % lowercase_length];
+        else
+            password[i] = symboles[rand() % length_symboles];
+    }
+    printf("Password: %s\n", password);
+    Strength_Check(password);
+}
+
 int main(){
-
-    printf("\nConditions to be followed: \n");
-    printf("    1.Password should have atleast 8 characters\n");
-    printf("    2.Password should have aleast 1 digit\n");
-    printf("    3.Password should have atleast 1 special character\n");
-    printf("    4.Password should have atleast 1 Uppercase\n");
-    printf("    3.Password should have atleast 1 Lowercase\n");
-
+    int i;
     char password[100];
 
-    do{ 
-        printf("================================================================\n");
-        printf("Enter your password: ");
-        scanf("%99s", password);
-        printf("\n");
-        printf("================================================================\n");
+    printf("Select from the following:\n");
+    printf("    1.Generate a Random Password & Check it's Strength\n");
+    printf("    2.Check the Strength of the Password\n");
+    printf("\n");
+    printf("Enter your option: ");
+    scanf("%d", &i);
 
-        Condition_Check(password);
-        if(strlen(password)<8)
-            printf("\nEnter aleast 8 characters\n");
-    }while(strlen(password)<8);
+    if(i == 1){
+        Generator();
+    }
 
-    Strength_Check(password);
+    else if(i==2){
+        printf("\nConditions to be followed: \n");
+        printf("    1.Password should have atleast 8 characters\n");
+        printf("    2.Password should have aleast 1 digit\n");
+        printf("    3.Password should have atleast 1 special character\n");
+        printf("    4.Password should have atleast 1 Uppercase\n");
+        printf("    3.Password should have atleast 1 Lowercase\n");
 
+        do{ 
+            printf("================================================================\n");
+            printf("Enter your password: ");
+            scanf("%99s", password);
+            printf("\n");
+            printf("================================================================\n");
+
+            Condition_Check(password);
+            if(strlen(password)<8)
+                printf("\nEnter aleast 8 characters\n");
+        }while(strlen(password)<8);
+
+        Strength_Check(password);
+    }
+    else{
+        printf("INVALID INPUT\n");
+    }
     printf("-----------------------------END-----------------------------");
     return 0;
 }
