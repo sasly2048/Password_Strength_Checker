@@ -51,7 +51,7 @@ gcc password_strength_checker.c -o password_checker
 gcc password_strength_checker.c
 ./a.out
 ```
-## ** 🖥️ ** Using GCC (Windows)
+## **🖥️** Using GCC (Windows)
 ```bash
 gcc password_strength_checker.c
 a or ./a 
