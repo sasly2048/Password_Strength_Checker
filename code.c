@@ -57,12 +57,12 @@ int main()
     char password[100];
     do 
     {
-        printf("Enter your password: ");
+        printf("\nEnter your password: ");
         scanf("%99s", password);
 
         if (strlen(password)<8)
         {
-        printf("Password Length is less than 8 Characters.");
+        printf("\nPassword Length is less than 8 Characters.");
         }
     }
     while (strlen(password)<8); 
